@@ -1,20 +1,26 @@
 import React, {useState} from 'react'
 
-function TodoForm() {
+function TodoForm(newTask) {
     const [input, setInput] = useState("");
 
     const handleChange = (e) => {
-        setInput(e.target.value);
+      setInput(e.target.value);
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        setInput("");
+      e.preventDefault();
+
+      newTask.onSubmit({
+        id: Math.floor(Math.random() * 100),
+        text: input
+      })
+      
+      setInput("");
     }
 
 
   return (
-    <form className='todoform' onSubmit={handleSubmit}>
+    <form className="inputForm" onSubmit={handleSubmit}>
         <input
         text='input'
         placeholder='To Do Task'
@@ -28,4 +34,4 @@ function TodoForm() {
   )
 }
 
-export default TodoForm
+export default TodoForm;
