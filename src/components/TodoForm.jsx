@@ -12,7 +12,7 @@ function TodoForm(newTask) {
 
       newTask.onSubmit({
         id: Math.floor(Math.random() * 100),
-        text: input
+        value: input
       })
       
       setInput("");
