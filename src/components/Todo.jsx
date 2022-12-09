@@ -9,6 +9,8 @@ const Todo = props => {
   const [tasksList, setTasksList] = useState([newTasks]);
   const toDoName = "toDoName";
   const toDoNameComplete = "toDoNameComplete";
+  const cardTask = "cardTask";
+  const cardTaskComplete = "cardTaskComplete";
 
   useEffect(() => {
     setTasksList([...newTasks])
@@ -31,15 +33,24 @@ const Todo = props => {
   }
 
   return(
-    <div>
-      <p>My Tasks</p>
+    <div class="container py-3">
       {tasksList.map((taskList, index) => {
         return(
-        <div key={index}>
-          <p className={clsx(toDoName, {[toDoNameComplete]: (taskList.state === true) })} key={taskList.id}>{taskList.value}</p>
-          <button onClick={() => deleteTask(taskList.id)}>X</button>
-          <button onClick={() => accomplishedTask(taskList.id)} disabled={taskList.state === true}>V</button>
-        </div>
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-sm-10">
+            <div class="card mb-4" className={clsx(cardTask, {[cardTaskComplete]: (taskList.state === true) })} key={taskList.id} >
+              <div class="card-body p-2 mt-3 py-3">
+                <div class="mx-3" key={index}>
+                  <p className={clsx(toDoName, {[toDoNameComplete]: (taskList.state === true) })} key={taskList.id}>{taskList.value}</p>
+                  <div class="d-flex justify-content-center align-items-center  py-2">
+                    <button type="button" class="btn btn-outline-success mx-2" onClick={() => accomplishedTask(taskList.id)} disabled={taskList.state === true}>V</button>
+                    <button type="button" class="btn btn-outline-danger mx-2" onClick={() => deleteTask(taskList.id)}>X</button>
+                  </div>
+                </div>
+              </div>
+           </div>
+         </div>
+       </div>
         );
       })}
     </div>

@@ -17,10 +17,12 @@ function ToDoList(){
     }
    
     return(
-        <div>
-            <h1>My To Do List</h1>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+            <h1 class="text-center text-light fw-bold">What Are You Going To Do Today ?</h1>
             <TodoForm onSubmit={submitNewTask} />
             <Todo newTasks={newTasks} />
+            </div>
         </div>
     )
 }
